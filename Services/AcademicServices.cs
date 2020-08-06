@@ -11,5 +11,6 @@ namespace WebApiBinaryHr.Services
 
         private BinaryHrDbContext Db;
         public AcademicServices(BinaryHrDbContext _db) => this.Db = _db;
+
     }
 }
