@@ -1,0 +1,25 @@
+2020-08-31 16:45:42.0290 Info Message Template Auto Format enabled
+2020-08-31 16:45:42.0800 Info Loading assembly: NLog.Web.AspNetCore
+2020-08-31 16:45:42.1808 Info Adding target FileTarget(Name=alldata)
+2020-08-31 16:45:42.2025 Info Adding target FileTarget(Name=otherFile-web)
+2020-08-31 16:45:42.3431 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=C:\Users\Fintrak Software\Documents\GitHub\WebApiBinaryHr\bin\Debug\netcoreapp3.1\nlog.config
+2020-08-31 16:46:46.4812 Info Shutdown() called. Logger closing...
+2020-08-31 16:46:46.4812 Info Closing old configuration.
+2020-08-31 16:46:46.5117 Info Logger has been closed down.
+2020-08-31 17:00:06.6785 Info Message Template Auto Format enabled
+2020-08-31 17:00:06.6989 Info Loading assembly: NLog.Web.AspNetCore
+2020-08-31 17:00:06.7732 Info Adding target FileTarget(Name=alldata)
+2020-08-31 17:00:06.7969 Info Adding target FileTarget(Name=otherFile-web)
+2020-08-31 17:00:06.8465 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=C:\Users\Fintrak Software\Documents\GitHub\WebApiBinaryHr\bin\Debug\netcoreapp3.1\nlog.config
+2020-08-31 17:03:55.0995 Info Message Template Auto Format enabled
+2020-08-31 17:03:55.0995 Info Loading assembly: NLog.Web.AspNetCore
+2020-08-31 17:03:55.1604 Info Adding target FileTarget(Name=alldata)
+2020-08-31 17:03:55.1604 Info Adding target FileTarget(Name=otherFile-web)
+2020-08-31 17:03:55.1915 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=C:\Users\Fintrak Software\Documents\GitHub\WebApiBinaryHr\bin\Debug\netcoreapp3.1\NLog.config
+2020-08-31 17:03:55.2085 Info Configuration initialized.
+2020-08-31 17:03:55.2489 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.4.12037. Product version: 4.7.4+454058bafb2ed9f9432163ab9436e1afac0b231f. GlobalAssemblyCache: False
+2020-08-31 22:27:19.4923 Info Message Template Auto Format enabled
+2020-08-31 22:27:19.5505 Info Loading assembly: NLog.Web.AspNetCore
+2020-08-31 22:27:19.6750 Info Adding target FileTarget(Name=alldata)
+2020-08-31 22:27:19.7621 Info Adding target FileTarget(Name=otherFile-web)
+2020-08-31 22:27:19.8199 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=C:\Users\Fintrak Software\Documents\GitHub\WebApiBinaryHr\bin\Debug\netcoreapp3.1\nlog.config

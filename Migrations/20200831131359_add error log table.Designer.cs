@@ -10,8 +10,8 @@ using WebApiBinaryHr.Entities;
 namespace WebApiBinaryHr.Migrations
 {
     [DbContext(typeof(BinaryHrDbContext))]
-    [Migration("20200803053133_add companyname to jobtable")]
-    partial class addcompanynametojobtable
+    [Migration("20200831131359_add error log table")]
+    partial class adderrorlogtable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,26 +235,8 @@ namespace WebApiBinaryHr.Migrations
                     b.Property<DateTime>("Created_At")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Hired")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Interview")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Pending")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rejected")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ShortListed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Total")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -268,6 +250,39 @@ namespace WebApiBinaryHr.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("WebApiBinaryHr.Entities.ErrorLogs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Level")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LoggedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StackTrace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("additionalInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("innerException")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ErrorLogs");
                 });
 
             modelBuilder.Entity("WebApiBinaryHr.Entities.Experience", b =>
@@ -353,17 +368,35 @@ namespace WebApiBinaryHr.Migrations
                     b.Property<DateTime>("Expired_At")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Hired")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Interview")
+                        .HasColumnType("int");
+
                     b.Property<string>("JobType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Pending")
+                        .HasColumnType("int");
+
                     b.Property<string>("Qualification")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Rejected")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShortListed")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");

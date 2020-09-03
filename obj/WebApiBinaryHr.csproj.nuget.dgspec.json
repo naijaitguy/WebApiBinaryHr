@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\a\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj": {}
+    "C:\\Users\\Fintrak Software\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj": {}
   },
   "projects": {
-    "C:\\Users\\a\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj": {
+    "C:\\Users\\Fintrak Software\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj",
+        "projectUniqueName": "C:\\Users\\Fintrak Software\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj",
         "projectName": "WebApiBinaryHr",
-        "projectPath": "C:\\Users\\a\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj",
-        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a\\Documents\\GitHub\\WebApiBinaryHr\\obj\\",
+        "projectPath": "C:\\Users\\Fintrak Software\\Documents\\GitHub\\WebApiBinaryHr\\WebApiBinaryHr.csproj",
+        "packagesPath": "C:\\Users\\Fintrak Software\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fintrak Software\\Documents\\GitHub\\WebApiBinaryHr\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Fintrak Software\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -81,6 +76,18 @@
               "target": "Package",
               "version": "[3.1.6, )"
             },
+            "NLog": {
+              "target": "Package",
+              "version": "[4.7.4, )"
+            },
+            "NLog.Config": {
+              "target": "Package",
+              "version": "[4.7.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[4.9.3, )"
+            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[5.5.1, )"
@@ -112,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

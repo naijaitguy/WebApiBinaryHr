@@ -130,15 +130,15 @@ namespace WebApiBinaryHr.Controllers
 
                     var Result = await UserManager.CreateAsync(NewUser, Model.Password);
 
-                    if (Result.Succeeded)
-                    {
+                if (Result.Succeeded)
+                {
 
-                        var role = await this.UserManager.AddToRoleAsync(NewUser, "User");
+                    var role = await this.UserManager.AddToRoleAsync(NewUser, "User");
 
-                        if (role.Succeeded) { return Ok("User Created Successfully"); } else { return BadRequest("Internal server error role failed"); }
+                    if (role.Succeeded) { return Ok("User Created Successfully"); } else { return BadRequest("Internal server error role failed"); }
 
-                    }
-                    else { return BadRequest(); }
+                }
+                else { return BadRequest("error"); }
                 
                
             }

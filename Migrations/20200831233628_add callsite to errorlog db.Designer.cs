@@ -10,8 +10,8 @@ using WebApiBinaryHr.Entities;
 namespace WebApiBinaryHr.Migrations
 {
     [DbContext(typeof(BinaryHrDbContext))]
-    [Migration("20200802125935_initail create")]
-    partial class initailcreate
+    [Migration("20200831233628_add callsite to errorlog db")]
+    partial class addcallsitetoerrorlogdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,26 +235,8 @@ namespace WebApiBinaryHr.Migrations
                     b.Property<DateTime>("Created_At")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Hired")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Interview")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Pending")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rejected")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ShortListed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Total")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -268,6 +250,42 @@ namespace WebApiBinaryHr.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("WebApiBinaryHr.Entities.ErrorLogs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CallSite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Level")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LoggedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StackTrace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("additionalInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("innerException")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ErrorLogs");
                 });
 
             modelBuilder.Entity("WebApiBinaryHr.Entities.Experience", b =>
@@ -338,8 +356,11 @@ namespace WebApiBinaryHr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Created_At")
+                    b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created_At")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -347,17 +368,38 @@ namespace WebApiBinaryHr.Migrations
                     b.Property<string>("Experince")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Expired_At")
+                    b.Property<DateTime>("Expired_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Hired")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Interview")
+                        .HasColumnType("int");
+
+                    b.Property<string>("JobType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Pending")
+                        .HasColumnType("int");
+
                     b.Property<string>("Qualification")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Rejected")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShortListed")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -435,6 +477,12 @@ namespace WebApiBinaryHr.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -580,6 +628,48 @@ namespace WebApiBinaryHr.Migrations
                     b.HasOne("WebApiBinaryHr.Entities.User", "User")
                         .WithOne("Profile")
                         .HasForeignKey("WebApiBinaryHr.Entities.Profile", "UserId");
+                });
+
+            modelBuilder.Entity("WebApiBinaryHr.Entities.User", b =>
+                {
+                    b.OwnsMany("WebApiBinaryHr.Entities.RefreshToken", "RefreshTokens", b1 =>
+                        {
+                            b1.Property<string>("UserId")
+                                .HasColumnType("nvarchar(450)");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<DateTime>("Created")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<string>("CreatedByIp")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<DateTime>("Expires")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<string>("ReplacedByToken")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<DateTime?>("Revoked")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<string>("RevokedByIp")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Token")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UserId", "Id");
+
+                            b1.ToTable("RefreshToken");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId");
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WebApiBinaryHr._Helper;
 using Microsoft.OpenApi.Models;
+using WebApiBinaryHr.Helper;
 
 namespace WebApiBinaryHr
 {
@@ -194,8 +195,9 @@ namespace WebApiBinaryHr
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "BinaryHrWebApi"); });
             app.UseHttpsRedirection();
+           
             app.UseStaticFiles();
-          
+            app.UseMiddleware<NoCacheMiddleware>();
 
             app.UseRouting();
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NLog;
 using WebApiBinaryHr.Entities;
 using WebApiBinaryHr.Models.JobModel;
 using WebApiBinaryHr.Services;
@@ -17,8 +19,12 @@ namespace WebApiBinaryHr.Controllers
     {
 
         private readonly IUnitofwork Services_Repo;
+        private readonly ILogger <HomeController> logger;
 
-        public HomeController(IUnitofwork unitofwork) => this.Services_Repo = unitofwork;
+        public HomeController(IUnitofwork unitofwork, ILogger<HomeController> _logger)
+        { this.Services_Repo = unitofwork;
+            logger = _logger;
+        }
         // GET: api/<HomeController>
         [HttpGet]
         [Route("GetAllJobs")]
@@ -26,16 +32,23 @@ namespace WebApiBinaryHr.Controllers
         {
 
             try {
-
-              var Result = await this.Services_Repo.Jobservice.GetAllJobs();
+                
+                var Result = await this.Services_Repo.Jobservice.GetAllJobs();
 
                 if (Result.Count() > 0) { return Ok(Result); }
 
-                else { return NotFound(new { Mgs = " No Job Found " }) ; }
+                else {
+
+                    return NotFound(new { Mgs = " No Job Found " }) ;
+
+                    
+                }
             }
 
             catch ( Exception Ex)
-            { return BadRequest( new { Mgs = "Internal Server Err" } ); }
+            {
+                logger.LogError(Ex.ToString());
+                return BadRequest( new { Mgs = "Internal Server Err" } ); }
           
         }
 

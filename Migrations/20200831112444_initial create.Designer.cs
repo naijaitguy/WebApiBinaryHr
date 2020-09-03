@@ -10,8 +10,8 @@ using WebApiBinaryHr.Entities;
 namespace WebApiBinaryHr.Migrations
 {
     [DbContext(typeof(BinaryHrDbContext))]
-    [Migration("20200803075731_restructure job and application table")]
-    partial class restructurejobandapplicationtable
+    [Migration("20200831112444_initial create")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

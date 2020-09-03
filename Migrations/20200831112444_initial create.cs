@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApiBinaryHr.Migrations
 {
-    public partial class initailcreate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,9 @@ namespace WebApiBinaryHr.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     AppId = table.Column<Guid>(nullable: false),
-                    Created_At = table.Column<DateTime>(nullable: false)
+                    Created_At = table.Column<DateTime>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,13 +162,21 @@ namespace WebApiBinaryHr.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
+                    CompanyName = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Qualification = table.Column<string>(nullable: true),
                     Experince = table.Column<string>(nullable: true),
-                    Created_At = table.Column<string>(nullable: true),
-                    Expired_At = table.Column<string>(nullable: true),
-                    Location = table.Column<string>(nullable: true)
+                    Created_At = table.Column<DateTime>(nullable: false),
+                    JobType = table.Column<string>(nullable: true),
+                    Expired_At = table.Column<DateTime>(nullable: false),
+                    Location = table.Column<string>(nullable: true),
+                    Total = table.Column<int>(nullable: false),
+                    Hired = table.Column<int>(nullable: false),
+                    ShortListed = table.Column<int>(nullable: false),
+                    Interview = table.Column<int>(nullable: false),
+                    Pending = table.Column<int>(nullable: false),
+                    Rejected = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -206,18 +216,38 @@ namespace WebApiBinaryHr.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RefreshToken",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Token = table.Column<string>(nullable: true),
+                    Expires = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    CreatedByIp = table.Column<string>(nullable: true),
+                    Revoked = table.Column<DateTime>(nullable: true),
+                    RevokedByIp = table.Column<string>(nullable: true),
+                    ReplacedByToken = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshToken", x => new { x.UserId, x.Id });
+                    table.ForeignKey(
+                        name: "FK_RefreshToken_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Applications",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     JobId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    Total = table.Column<int>(nullable: false),
-                    Hired = table.Column<int>(nullable: false),
-                    ShortListed = table.Column<int>(nullable: false),
-                    Interview = table.Column<int>(nullable: false),
-                    Pending = table.Column<int>(nullable: false),
-                    Rejected = table.Column<int>(nullable: false),
                     Created_At = table.Column<DateTime>(nullable: false),
                     AppId = table.Column<string>(nullable: true)
                 },
@@ -417,6 +447,9 @@ namespace WebApiBinaryHr.Migrations
 
             migrationBuilder.DropTable(
                 name: "Experiences");
+
+            migrationBuilder.DropTable(
+                name: "RefreshToken");
 
             migrationBuilder.DropTable(
                 name: "Jobs");

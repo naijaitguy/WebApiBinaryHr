@@ -23,6 +23,7 @@ namespace WebApiBinaryHr.Entities
         public virtual DbSet<Experience> Experiences { get; set; }
         public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
+        public virtual DbSet<ErrorLogs> ErrorLogs { get; set; }
 
 
     }
