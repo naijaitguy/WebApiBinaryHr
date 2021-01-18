@@ -39,6 +39,7 @@ namespace WebApiBinaryHr.Controllers
 
                 else {
 
+                    logger.LogError("NO JOB FOUND ");
                     return NotFound(new { Mgs = " No Job Found " }) ;
 
                     
